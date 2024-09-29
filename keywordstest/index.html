@@ -26,18 +26,28 @@
 
     <script>
         let violationKeywords = [];
+        let keywordsLoaded = false;
 
         function loadKeywords() {
             var keywordFileUrl = document.getElementById('keywordFileUrl').value;
+            // 清空现有关键词数组
+            violationKeywords = [];
             fetch(keywordFileUrl)
-                .then(response => response.text())
+                .then(response => {
+                    if (!response.ok) { // 检查响应状态码是否为2xx
+                        throw new Error('Network response was not ok.');
+                    }
+                    return response.text();
+                })
                 .then(text => {
                     violationKeywords = text.split(',').map(keyword => keyword.trim().toLowerCase());
+                    keywordsLoaded = true;
                     document.getElementById('result').innerHTML = '<p>关键词加载成功。</p>';
                 })
                 .catch(error => {
                     console.error('加载关键词文件失败:', error);
                     document.getElementById('result').innerHTML = '<p>关键词加载失败，请检查URL。</p>';
+                    keywordsLoaded = false;
                 });
         }
 
@@ -46,6 +56,11 @@
         };
 
         function checkKeywords() {
+            if (!keywordsLoaded) {
+                document.getElementById('result').innerHTML = '<p>关键词库加载失败，请重新输入。</p>';
+                return;
+            }
+
             var text = document.getElementById('textInput').value;
             var violations = findViolations(text);
             var highlightedText = highlightViolations(text, violations);
