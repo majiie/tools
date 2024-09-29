@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>违规关键词检测（自定义关键词文件）</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>违规关键词检测工具</h1>
+    
+    <label for="keywordFileUrl">关键词文件URL：</label>
+    <input type="text" id="keywordFileUrl" value="https://tools.majie.me/keywordstest/keywords.txt">
+    <button onclick="loadKeywords()">重新加载关键词</button>
+    
+    <form id="keywordForm">
+        <label for="textInput">请输入文本：</label><br>
+        <textarea id="textInput" rows="4" cols="50"></textarea><br>
+        <input type="button" value="检测违规关键词" onclick="checkKeywords()">
+    </form>
+    
+    <div id="result"></div>
+
+    <script>
+        let violationKeywords = [];
+
+        function loadKeywords() {
+            var keywordFileUrl = document.getElementById('keywordFileUrl').value;
+            fetch(keywordFileUrl)
+                .then(response => response.text())
+                .then(text => {
+                    violationKeywords = text.split(',').map(keyword => keyword.trim().toLowerCase());
+                    document.getElementById('result').innerHTML = '<p>关键词加载成功。</p>';
+                })
+                .catch(error => {
+                    console.error('加载关键词文件失败:', error);
+                    document.getElementById('result').innerHTML = '<p>关键词加载失败，请检查URL。</p>';
+                });
+        }
+
+        window.onload = function() {
+            loadKeywords();
+        };
+
+        function checkKeywords() {
+            var text = document.getElementById('textInput').value;
+            var violations = findViolations(text);
+            var highlightedText = highlightViolations(text, violations);
+            var resultDiv = document.getElementById('result');
+            if(violations.length > 0) {
+                resultDiv.innerHTML = '<p>检测到违规关键词，已高亮显示：</p>' + highlightedText;
+            } else {
+                resultDiv.innerHTML = '<p>文本检测通过，没有违规关键词。</p>';
+            }
+        }
+
+        function findViolations(text) {
+            let foundKeywords = [];
+            violationKeywords.forEach(keyword => {
+                // 判断关键词是英文还是中文
+                let isEnglish = /^[a-zA-Z]+$/.test(keyword);
+                if (isEnglish) {
+                    // 英文关键词使用精准匹配，不区分大小写
+                    let regex = new RegExp(`\\b${keyword}\\b`, 'gi');
+                    if (regex.test(text)) {
+                        foundKeywords.push(keyword);
+                    }
+                } else {
+                    // 中文关键词使用包含匹配
+                    if (text.includes(keyword)) {
+                        foundKeywords.push(keyword);
+                    }
+                }
+            });
+            return foundKeywords;
+        }
+
+        function highlightViolations(text, violations) {
+            let highlightedText = text;
+            violations.forEach(keyword => {
+                let isEnglish = /^[a-zA-Z]+$/.test(keyword);
+                if (isEnglish) {
+                    // 英文关键词使用精准匹配，不区分大小写
+                    let regex = new RegExp(`(\\b${keyword}\\b)`, 'gi');
+                    highlightedText = highlightedText.replace(regex, `<span class="highlight">$1</span>`);
+                } else {
+                    // 中文关键词使用包含匹配
+                    let regex = new RegExp(`(${keyword})`, 'g');
+                    highlightedText = highlightedText.replace(regex, `<span class="highlight">$1</span>`);
+                }
+            });
+            return '<p>' + highlightedText + '</p>';
+        }
+    </script>
+</body>
+</html>
