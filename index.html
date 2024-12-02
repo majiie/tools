@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collapsible Categories</title>
+<link rel="stylesheet" href="style/normalize.css">
+<link rel="stylesheet" href="style/index.css">
+</head>
+<body>
+
+<div id="container">
+  <div id="sidebar">
+    <button class="category" onclick="loadContent('home.html')">首页</button>
+    <button class="category" onclick="toggleCategory('cat1')">Category 1</button>
+    <div class="sub-buttons" id="cat1">
+      <button onclick="loadContent('passwd/index.html')">Page 1</button>
+      <button onclick="loadContent('page2.html')">Page 2</button>
+    </div>
+    
+    <button class="category" onclick="toggleCategory('cat2')">Category 2</button>
+    <div class="sub-buttons" id="cat2">
+      <button onclick="loadContent('page3.html')">Page 3</button>
+      <button onclick="loadContent('page4.html')">Page 4</button>
+    </div>
+  </div>
+  
+  <div id="content">
+    <!-- Content will be loaded here -->
+  </div>
+</div>
+
+<script defer type="text/javascript" src="script/index.js"></script>
+</body>
+</html>

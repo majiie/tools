@@ -1,113 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>随机密码生成器</title>
+    <link rel="stylesheet" type=""text/css" href="../style/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../style/passwd.css">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100dvh;
-        }
-        .container {
-            text-align: center;
-            height: 100dvh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-        }
-        input[type="number"] {
-            width: 50px;
-        }
-        .password {
-            font-size: 1.2em;
-            margin: 10px 0;
-            word-break: break-all;
-        }
-        .copy-button {
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            margin-top: 10px;
-        }
-        .copy-button:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-        }
-        .tooltip {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px; /* 设置合适大小 */
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 10px;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s;
-            z-index: 1000;
-        }
-        .tooltip.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .uppercase {
-            font-weight: bold;
-            color: black;
-        }
-        .lowercase {
-            color: black;
-        }
-        .number {
-            color: red;
-        }
-        .symbol {
-            color: blue;
-        }
-        .history {
-            margin-top: 20px;
-            text-align: left;
-            width: 100%;
-            max-width: 600px;
-        }
-        .history-item {
-            margin-bottom: 10px;
-            word-break: break-all;
-        }
-        #historyList {
-            background-color: #cccccc;
-            border: 1px solid white;
-            border-radius: 10px;
-        }
+        
     </style>
 </head>
 <body>
-    <div class="container">
+    
+    <div class="toolconcentcontainer">
         <h1>随机密码生成器</h1>
-        <label for="length">密码长度:</label>
-        <input type="number" id="length" name="length" min="4" max="64" value="16" oninput="checkLength()">
+        <div class="passwdlength"><label for="length">密码长度:&nbsp;&nbsp;</label>
+        <input type="number" id="length" name="length" min="4" max="64" value="16" oninput="checkLength()"></div>
         <br><br>
+        <div class="textoptions">
+        字符选项:&nbsp;&nbsp;
         <label><input type="checkbox" id="uppercase" checked> 大写字母</label>
         <label><input type="checkbox" id="lowercase" checked> 小写字母</label>
         <label><input type="checkbox" id="numbers" checked> 阿拉伯数字</label>
         <label><input type="checkbox" id="symbols" checked> 特殊符号</label>
+    </div>
         <br><br>
-        <label for="exclude">要排除的字符:</label>
+        <div class="excludetext">
+        <label for="exclude">要排除的字符:&nbsp;&nbsp;</label>
         <input type="text" id="exclude" name="exclude">
+    </div>
         <br><br>
         <button onclick="generatePassword()">生成密码</button>
         <div class="password" id="password"></div>
