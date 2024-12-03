@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>随机密码生成器</title>
     <link rel="stylesheet" type="" text/css" href="../style/normalize.css">
+    <link rel="stylesheet" type="" text/css" href="../style/common.css">
     <link rel="stylesheet" type="text/css" href="../style/passwd.css">
     <style>
 
@@ -16,6 +17,7 @@
 
     <div class="toolconcentcontainer">
         <h1>随机密码生成器</h1>
+        <h2 style="margin-bottom: 1dvh;">字符选项</h2>
         <div class="passwdlength"><label for="length">密码长度:&nbsp;&nbsp;</label>
             <input type="number" id="length" name="length" min="4" max="64" value="16" oninput="checkLength()">
         </div>
@@ -35,15 +37,15 @@
         
         <div class="password" id="password"></div>
         <div class="passwdactionbutton">
-            <button onclick="generatePassword()">生成密码</button>
-            <button class="copy-button" id="copyButton" onclick="copyPassword()" disabled>复制密码</button>
-            
+            <button class="generatebutton" onclick="generatePassword()">生成密码</button>
+            <button class="copybutton" id="copyButton" onclick="copyPassword()" disabled>复制密码</button>
+            <button class="deletebutton" onclick="clearHistory()">清除历史记录</button>
             
         </div>
         <div class="tooltip" id="copyTooltip"></div>
         <div class="history">
-            <h2>历史记录</h2>
-            <button onclick="clearHistory()">清除历史记录</button>
+            <h2>本地历史记录</h2>
+            
         </div>
             <div id="historyList"></div>
         

@@ -38,20 +38,6 @@ input[type="number"] {
     align-items: center;
 }
 
-.copy-button {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.05);
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    /* margin-top: 10px; */
-}
-
-.copy-button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-}
-
 .tooltip {
     position: fixed;
     top: 50%;
@@ -98,27 +84,20 @@ input[type="number"] {
     width: 100%;
     max-width: 600px;
     display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
     /* border-radius: 5px; */
-}
-.history button {
-    border-radius: 5px;
-    padding: 5px 10px;
-    background-color: #fa5151;
-    color: white;
-    border: none;
-    /* width: 8dvw; */
-    height: 2dvw;
 }
 
 .history-item {
     /* height: 3dvh; */
     word-break: break-all;
-    margin-bottom: 1.5dvh;
+    margin-bottom: 1dvh;
     background-color: rgba(0, 0, 0, 0.05);
     padding: 5px 15px;
     border-radius: 5px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -135,17 +114,23 @@ input[type="number"] {
 
 .passwdlength {
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 1dvh;
 }
 
 .textoptions {
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 1dvh;
 }
 
 .excludetext {
     display: flex;
-    margin-bottom: 1dvh;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 1dvh; */
 }
 
 .excludetext input {
@@ -159,18 +144,39 @@ input[type="number"] {
     cursor: pointer;
     background-color: #07c160;
     font-size: 15px;
-    color: white;
+    
     border-radius: 6px;
     padding: 8px 12px;
     border: none;
 }
-.copy-button {
+.generatebutton {
+    background-color: #07c160;
+    color: white;
+}
+.generatebutton:hover {
+    background-color: #06ad56;
+}
+.copybutton {
     background-color: rgba(0, 0, 0, 0.05)!important;
     color: black!important;
     margin-left: 10px;
 }
 
-.copy-button:disabled {
+.copybutton:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
+}
+.deletebutton {
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: #fa5151!important;
+    color: white;
+    border: none;
+    /* width: 8dvw; */
+    /* height: 2dvw; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    margin-left: 10px;
 }
