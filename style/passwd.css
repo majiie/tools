@@ -30,17 +30,21 @@ input[type="number"] {
 
 .password {
     font-size: 1.2em;
-    margin: 10px 0;
+    margin: 1dvw;
     word-break: break-all;
+    height: 5dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .copy-button {
     cursor: pointer;
-    background-color: #4CAF50;
+    background-color: rgba(0, 0, 0, 0.05);
     color: white;
     border: none;
-    padding: 5px 10px;
-    margin-top: 10px;
+    padding: 6px 12px;
+    /* margin-top: 10px; */
 }
 
 .copy-button:disabled {
@@ -89,7 +93,7 @@ input[type="number"] {
 }
 
 .history {
-    margin-top: 20px;
+    margin-bottom: 1dvh;
     text-align: left;
     width: 100%;
     max-width: 600px;
@@ -98,33 +102,50 @@ input[type="number"] {
 }
 .history button {
     border-radius: 5px;
-    padding: 5px 15px;
-    background-color: rgba(0, 0, 0, 0.1);
-    color: red;
+    padding: 5px 10px;
+    background-color: #fa5151;
+    color: white;
+    border: none;
+    /* width: 8dvw; */
+    height: 2dvw;
 }
 
 .history-item {
-    margin-bottom: 10px;
+    /* height: 3dvh; */
     word-break: break-all;
+    margin-bottom: 1.5dvh;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 5px 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #historyList {
-    background-color: #cccccc;
+    /* background-color: #cccccc; */
     border: 1px solid white;
     border-radius: 10px;
+    /* height: 50dvh; */
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
 }
 
 .passwdlength {
     display: flex;
-
+    margin-bottom: 1dvh;
 }
 
 .textoptions {
     display: flex;
+    margin-bottom: 1dvh;
 }
 
 .excludetext {
     display: flex;
+    margin-bottom: 1dvh;
 }
 
 .excludetext input {
@@ -132,4 +153,24 @@ input[type="number"] {
 }
 .passwdactionbutton {
     display: flex;
+    margin-bottom: 1dvh;
+}
+.passwdactionbutton button {
+    cursor: pointer;
+    background-color: #07c160;
+    font-size: 15px;
+    color: white;
+    border-radius: 6px;
+    padding: 8px 12px;
+    border: none;
+}
+.copy-button {
+    background-color: rgba(0, 0, 0, 0.05)!important;
+    color: black!important;
+    margin-left: 10px;
+}
+
+.copy-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
 }
