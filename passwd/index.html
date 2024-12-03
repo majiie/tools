@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>随机密码生成器</title>
-    <link rel="stylesheet" type=""text/css" href="../style/normalize.css">
+    <link rel="stylesheet" type="" text/css" href="../style/normalize.css">
     <link rel="stylesheet" type="text/css" href="../style/passwd.css">
     <style>
-        
+
     </style>
 </head>
+
 <body>
-    
+
     <div class="toolconcentcontainer">
         <h1>随机密码生成器</h1>
         <div class="passwdlength"><label for="length">密码长度:&nbsp;&nbsp;</label>
-        <input type="number" id="length" name="length" min="4" max="64" value="16" oninput="checkLength()"></div>
+            <input type="number" id="length" name="length" min="4" max="64" value="16" oninput="checkLength()">
+        </div>
         <br><br>
         <div class="textoptions">
-        字符选项:&nbsp;&nbsp;
-        <label><input type="checkbox" id="uppercase" checked> 大写字母</label>
-        <label><input type="checkbox" id="lowercase" checked> 小写字母</label>
-        <label><input type="checkbox" id="numbers" checked> 阿拉伯数字</label>
-        <label><input type="checkbox" id="symbols" checked> 特殊符号</label>
-    </div>
+            字符选项:&nbsp;&nbsp;
+            <label><input type="checkbox" id="uppercase" checked> 大写字母</label>
+            <label><input type="checkbox" id="lowercase" checked> 小写字母</label>
+            <label><input type="checkbox" id="numbers" checked> 阿拉伯数字</label>
+            <label><input type="checkbox" id="symbols" checked> 特殊符号</label>
+        </div>
         <br><br>
         <div class="excludetext">
-        <label for="exclude">要排除的字符:&nbsp;&nbsp;</label>
-        <input type="text" id="exclude" name="exclude">
-    </div>
+            <label for="exclude">要排除的字符:&nbsp;&nbsp;</label>
+            <input type="text" id="exclude" name="exclude">
+        </div>
         <br><br>
-        <button onclick="generatePassword()">生成密码</button>
-        <div class="password" id="password"></div>
-        <button class="copy-button" id="copyButton" onclick="copyPassword()" disabled>复制密码</button>
+        <div class="passwdactionbutton">
+            <button onclick="generatePassword()">生成密码</button>
+            <button class="copy-button" id="copyButton" onclick="copyPassword()" disabled>复制密码</button>
+            <div class="password" id="password"></div>
+            
+        </div>
         <div class="tooltip" id="copyTooltip"></div>
         <div class="history">
             <h2>历史记录</h2>
@@ -180,9 +186,10 @@
             updateHistoryUI();
         }
 
-        window.onload = function() {
+        window.onload = function () {
             updateHistoryUI();
         };
     </script>
 </body>
+
 </html>

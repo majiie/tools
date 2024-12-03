@@ -2,16 +2,27 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    outline: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+body {
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
 }
 #container {
     display: flex;
     /* padding: 2dvh 1dvw; */
+    height: 100dvh;
+    width: 100dvw;
   }
   
   #sidebar {
     width: 15dvw;
     background-color: #f2f2f2;
-    padding: 10px;
+    padding: 3dvh 1dvw;
+    height: 100dvh;
+    overflow-y: auto;
   }
   
   .category {
@@ -40,12 +51,14 @@
   
   #content {
     flex-grow: 1;
-    /* padding: 10px; */
+    padding: 0 1dvw;
     border-left: 1px solid #ccc;
-    height: 98dvh;
+    height: 100dvh;
+    width: 85dvw;
   }
   #content iframe {
-    width: 79dvw;
+    width: 85dvw;
     height: 100dvh;
+    border: none;
   }
   
